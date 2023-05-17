@@ -2,12 +2,12 @@
 
 ### VARIABLES ###
 
-apt_pkgs_codecs_and_utils="git wget gpg apt-transport-https"
+apt_pkgs_codecs_and_utils="git wget gpg apt-transport-https flatpak gnome-software-plugin-flatpak"
 apt_pkgs_gnome_wayland_and_eyecandy="gnome-tweaks dconf-editor ulauncher wl-clipboard wmctrl"
 apt_pkgs_terminal="zsh kitty btop neofetch ranger vim code"
 apt_pkgs_devops="ansible docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin"
 apt_pkgs_langs="python3 python3-pip rust cargo"
-apt_pkgs_deps=""
+apt_pkgs_deps="g++ cmake libfuse2"
 apt_paco_deps="gcc clang libpq-dev libbsd-dev libncurses-dev valgrind python3-venv python3-wheel python3-dev python-dev"
 
 
@@ -47,6 +47,9 @@ rm -f packages.microsoft.gpg
 
 # Add ULauncher ppa
 sudo add-apt-repository -yq ppa:agornostal/ulauncher > /dev/null 2>&1
+
+# Add universe ppa for libfuse2
+sudo add-apt-repository -yq universe > /dev/null 2>&1
 
 # Remove previous Docker versions and add its repo
 sudo apt-get remove -yq docker docker-engine docker.io containerd runc > /dev/null 2>&1
