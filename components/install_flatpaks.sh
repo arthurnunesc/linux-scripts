@@ -26,11 +26,9 @@ install_flatpak_apps_from_string() {
 
 ### EXECUTION ###
 
-update_everything() {
-  sudo dnf update -yq > /dev/null 2>&1
-  sudo dnf upgrade -yq --refresh > /dev/null 2>&1
-  flatpak update -y --noninteractive > /dev/null 2>&1
-}
+# Add flathub repo
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo > /dev/null 2>&1
+flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo > /dev/null 2>&1
 
 printf "\n\t\033[36m[ flatpak - start ]\033[0m\n"
 printf "\t - installing flatpak apps...\n"

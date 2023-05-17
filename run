@@ -2,8 +2,12 @@
 
 
 install() {
-  sh ./components/fedora.sh
-  sh ./components/install_apps.sh
+  if [ -e "/etc/*-release" ]; then
+    distro=$(grep -oP 'ID=\K\w+' /etc/*-release)
+  fi
+  sh ./components/install_"$distro"_apps.sh
+  sh ./components/install_linux_apps.sh
+  sh ./components/install_flatpak.sh
 }
 
 config() {
@@ -28,7 +32,7 @@ ask_if_reboot() {
   fi
 }
 
-printf "\n\033[36mwelcome to arthurnunesc's fedora scripts!\033[0m\n\n"
+printf "\n\033[36mwelcome to arthurnunesc's linux scripts!\033[0m\n\n"
 
 if [ "$1" = "both" ]; then
   printf "\033[32minstalling and configuring everything...\033[0m\n"
