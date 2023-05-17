@@ -39,9 +39,9 @@ only_update() {
 }
 
 # Takes a string with dnf packages separated by spaces and installs them one by one
-install_dnf_pkgs_from_string() {
-  installed_dnf_apps=$(dnf list --installed | awk '{print $1}')
+installed_dnf_apps=$(dnf list --installed | awk '{print $1}')
 
+install_dnf_pkgs_from_string() {
   echo "$1" | tr ' ' '\n' | while read -r app; do
     if ! echo "$installed_dnf_apps" | grep -q "$app"; then
       sudo dnf install -yq "$app" > /dev/null 2>&1
@@ -76,19 +76,23 @@ update_and_upgrade
 printf "\n\t\033[36m[ dnf - start ]\033[0m\n"
 
 printf "\t- installing codecs, utils and dependencies...\n"
-install_dnf_pkgs_from_string "$dnf_pkgs_codecs_and_utils"
+install_dnf_pkgs_from_string "$dnf_pkgs_codecs_and_utils" "$installed_dnf_apps"
 sudo dnf install -yq gstreamer1-plugins-good gstreamer1-plugins-base --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf groupinstall -yq "Development Tools"
 sudo dnf install -yq lame\* --exclude=lame-devel
 sudo dnf group upgrade -yq --with-optional Multimedia
 printf "\t- installing packages related to gnome, wayland and eyecandy...\n"
-install_dnf_pkgs_from_string "$dnf_pkgs_gnome_wayland_and_eyecandy"
+install_dnf_pkgs_from_string "$dnf_pkgs_gnome_wayland_and_ "$installed_dnf_apps"
+eyecandy"
 printf "\t- installing terminal related packages...\n"
-install_dnf_pkgs_from_string "$dnf_pkgs_terminal"
+install_dnf_pkgs_from_string "$dnf_pkgs_terminal" "$installed_dnf_apps"
+
 printf "\t- installing devops tools...\n"
-install_dnf_pkgs_from_string "$dnf_pkgs_devops"
+install_dnf_pkgs_from_string "$dnf_pkgs_devops" "$installed_dnf_apps"
+
 printf "\t- installing languages envs and their packages managers...\n"
-install_dnf_pkgs_from_string "$dnf_pkgs_langs"
+install_dnf_pkgs_from_string "$dnf_pkgs_langs" "$installed_dnf_apps"
+
 
 printf "\t\033[35m[ dnf - end ]\033[0m\n"
 

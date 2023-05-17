@@ -2,12 +2,12 @@
 
 
 install() {
-  if [ -e "/etc/*-release" ]; then
-    distro=$(grep -oP 'ID=\K\w+' /etc/*-release)
+  if [ -e "/etc/os-release" ]; then
+    distro=$(grep -oP 'ID=\K\w+' /etc/os-release)
   fi
   sh ./components/install_"$distro"_apps.sh
-  sh ./components/install_linux_apps.sh
-  sh ./components/install_flatpak.sh
+  sh ./components/install_apps.sh
+  sh ./components/install_flatpaks.sh
 }
 
 config() {
