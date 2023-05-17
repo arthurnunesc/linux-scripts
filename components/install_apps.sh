@@ -23,5 +23,6 @@ if [ -f "$HOME/.local/bin/nvim.appimage" ]; then
 else
   printf "\t\tinstalling \033[34mneovim\033[0m\n...\n"
   wget -q https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O "$HOME"/.local/bin/nvim.appimage
+  chmod +x "$HOME"/.local/bin/nvim.appimage
 fi
 printf "\t\033[35m[ manual installations - end ]\033[0m\n"
