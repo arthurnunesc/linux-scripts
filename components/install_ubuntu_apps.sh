@@ -6,7 +6,7 @@ apt_pkgs_codecs_and_utils="git wget gpg apt-transport-https flatpak gnome-softwa
 apt_pkgs_gnome_wayland_and_eyecandy="gnome-tweaks dconf-editor ulauncher wl-clipboard wmctrl"
 apt_pkgs_terminal="zsh kitty btop neofetch ranger vim code"
 apt_pkgs_devops="ansible docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin"
-apt_pkgs_langs="python3 python3-pip rust cargo"
+apt_pkgs_langs="python3 python3-pip python3-full pipx rust cargo"
 apt_pkgs_deps="g++ cmake libfuse2"
 apt_paco_deps="gcc clang libpq-dev libbsd-dev libncurses-dev valgrind python3-venv python3-wheel python3-dev python-dev"
 
