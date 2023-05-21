@@ -2,7 +2,7 @@
 
 ### VARIABLES ###
 
-apt_pkgs_codecs_and_utils="git wget gpg apt-transport-https flatpak gnome-software-plugin-flatpak"
+apt_pkgs_codecs_and_utils="git wget gpg apt-transport-https flatpak gnome-software-plugin-flatpak gnome-browser-connector"
 apt_pkgs_gnome_wayland_and_eyecandy="gnome-tweaks dconf-editor ulauncher wl-clipboard wmctrl"
 apt_pkgs_terminal="zsh kitty btop neofetch ranger vim code"
 apt_pkgs_devops="ansible docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin"
